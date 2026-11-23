@@ -57,6 +57,16 @@ flutter build apk --release --obfuscate --split-debug-info=build/symbols
 
 Without `key.properties`, release builds fall back to the debug key and Gradle prints a warning.
 
+### Publishing a release
+
+Releases are built by GitHub Actions (`.github/workflows/release.yml`), never from a local machine:
+
+1. Add four repository secrets: `ANDROID_KEYSTORE_BASE64` (output of `base64 -w0 enough-release.jks`), `ANDROID_STORE_PASSWORD`, `ANDROID_KEY_ALIAS` and `ANDROID_KEY_PASSWORD`. Keep an offline backup of the keystore: losing it means users can't update.
+2. Set `version:` in `pubspec.yaml` and date the entry in `CHANGELOG.md`.
+3. Tag and push: `git tag v1.0.0 && git push origin v1.0.0`.
+
+The workflow checks that the tag matches `pubspec.yaml`, refuses to build without the signing secrets or with a debug-signed APK, and opens a **draft** release with the APK and its SHA-256. Obfuscation symbols are kept as a private workflow artifact. Review the draft, then publish it.
+
 ## How it works
 
 | Layer | What it does |

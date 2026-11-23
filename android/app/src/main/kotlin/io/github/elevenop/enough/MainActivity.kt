@@ -1,4 +1,4 @@
-package com.brainrotwrapper.brainrot_wrapper
+package io.github.elevenop.enough
 
 import android.content.Intent
 import android.os.Build

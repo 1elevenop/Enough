@@ -66,7 +66,7 @@ Without `key.properties`, release builds fall back to the debug key and Gradle p
 
 ## Privacy
 
-Everything stays on your device. Enough has no server, no account, no analytics and no ads. Settings and usage stats are stored locally and are **excluded from Android backups**, as are WebView cookies (your logged-in sessions). Traffic is HTTPS-only.
+Everything stays on your device. Enough has no server, no account, no analytics and no ads. Settings and usage stats are stored locally and are **excluded from Android backups**, as are WebView cookies (your logged-in sessions). Traffic is HTTPS-only. Fonts are bundled in the app, so nothing is fetched from Google or any other font CDN.
 
 Your logins happen directly on each platform's own website inside the WebView. Enough never sees or stores your passwords.
 

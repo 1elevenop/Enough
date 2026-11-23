@@ -28,6 +28,6 @@ Scope: the whole repository, before its first public release. Enough is an **on-
 ## Remaining notes
 
 - **Release signing**: Gradle reads `android/key.properties`. Until you create a keystore, release APKs are signed with the debug key and Gradle warns about it. Do not distribute those builds.
-- **google_fonts** downloads Inter / Inter Tight from Google's servers at runtime, which sends your IP address to Google. To stop that, bundle the font files and set `GoogleFonts.config.allowRuntimeFetching = false`.
+- **Fonts (fixed)**: the `google_fonts` package used to download Inter / Inter Tight from Google's servers at runtime, which sent your IP address to Google. The package is removed; static Inter and Inter Tight TTFs (SIL OFL 1.1, licenses in `assets/fonts/`) are bundled in the APK and used via `fontFamily`, so no request goes to fonts.googleapis.com or fonts.gstatic.com.
 - A 4–8 digit PIN is a self-control lock, not strong encryption. Someone with root access and the prefs file can still brute-force it offline. It is just much slower now.
 - `tool/render_icon_test.dart` now copies the launcher/splash PNGs from `branding/`. It no longer paints the old cup mark.

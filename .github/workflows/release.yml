@@ -54,13 +54,17 @@ jobs:
           done
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
           # key.properties is a Java properties file: backslashes must be escaped.
-          esc() { printf '%s' "$1" | sed 's/\/\\/g'; }
+          bs='\'
           {
             echo "storeFile=$RUNNER_TEMP/release.jks"
-            echo "storePassword=$(esc "$STORE_PASSWORD")"
-            echo "keyAlias=$(esc "$KEY_ALIAS")"
-            echo "keyPassword=$(esc "$KEY_PASSWORD")"
+            echo "storePassword=${STORE_PASSWORD//"$bs"/"$bs$bs"}"
+            echo "keyAlias=${KEY_ALIAS//"$bs"/"$bs$bs"}"
+            echo "keyPassword=${KEY_PASSWORD//"$bs"/"$bs$bs"}"
           } > android/key.properties
+          # Every value must have survived (a broken escape once produced empty ones).
+          for k in storePassword keyAlias keyPassword; do
+            grep -q "^$k=." android/key.properties || { echo "::error::key.properties has an empty $k"; exit 1; }
+          done
           # Fail fast with a clear message instead of deep inside Gradle.
           if ! keytool -list -keystore "$RUNNER_TEMP/release.jks" -storepass "$STORE_PASSWORD" -alias "$KEY_ALIAS" >/dev/null; then
             echo "::error::ANDROID_STORE_PASSWORD or ANDROID_KEY_ALIAS does not match the keystore"; exit 1

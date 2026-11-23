@@ -6,7 +6,10 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-ff2bd6.svg"></a>
   <img alt="Platform: Android" src="https://img.shields.io/badge/platform-Android-120d1a.svg">
   <img alt="Built with Flutter" src="https://img.shields.io/badge/built%20with-Flutter-ffe14d.svg">
+  <img alt="Status: unreleased" src="https://img.shields.io/badge/status-unreleased-lightgrey.svg">
 </p>
+
+> **Not released yet.** There is no APK, Play Store listing or GitHub release. To try it, [build it from source](#build).
 
 **Enough** is an Android app that opens the mobile web versions of your social apps inside one calm, controlled browser. You keep messages, search and the people you follow. The feeds built to keep you scrolling (Reels, Shorts, Explore, For You) are hidden or blocked before they load.
 

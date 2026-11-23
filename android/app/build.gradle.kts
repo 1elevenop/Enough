@@ -14,7 +14,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.brainrotwrapper.brainrot_wrapper"
+    namespace = "io.github.elevenop.enough"
     // flutter_local_notifications and permission_handler need API 37.
     compileSdk = maxOf(37, flutter.compileSdkVersion)
     ndkVersion = flutter.ndkVersion
@@ -26,10 +26,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.brainrotwrapper.brainrot_wrapper"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        applicationId = "io.github.elevenop.enough"
         minSdk = maxOf(24, flutter.minSdkVersion)
         multiDexEnabled = true
         targetSdk = flutter.targetSdkVersion

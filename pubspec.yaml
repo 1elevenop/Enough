@@ -41,7 +41,6 @@ dependencies:
   local_auth: ^3.0.2
   crypto: ^3.0.8
   url_launcher: ^6.3.3
-  google_fonts: ^9.0.0
   font_awesome_flutter: ^11.0.0
 
 dev_dependencies:
@@ -69,6 +68,28 @@ flutter:
   assets:
     - assets/trackers.json
     - assets/brand/
+
+  fonts:
+    # Bundled so no font is ever fetched from Google at runtime (SIL OFL 1.1,
+    # see assets/fonts/OFL-*.txt).
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+    - family: InterTight
+      fonts:
+        - asset: assets/fonts/InterTight-Regular.ttf
+        - asset: assets/fonts/InterTight-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/InterTight-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/InterTight-Bold.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:

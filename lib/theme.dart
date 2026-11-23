@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// Design tokens. Warm paper canvas, ink text, one magenta accent.
 class Tokens {
@@ -51,27 +50,66 @@ class Tokens {
 }
 
 TextTheme _text(Tokens t) {
-  TextStyle display(double size, FontWeight w, double tracking) => GoogleFonts.interTight(
-      fontSize: size, fontWeight: w, letterSpacing: tracking, color: t.ink, height: 1.05);
+  TextStyle display(double size, FontWeight w, double tracking) => TextStyle(
+    fontFamily: 'InterTight',
+    fontSize: size,
+    fontWeight: w,
+    letterSpacing: tracking,
+    color: t.ink,
+    height: 1.05,
+  );
   return TextTheme(
         displayLarge: display(56, FontWeight.w700, -2.0),
         displayMedium: display(46, FontWeight.w700, -1.8),
         headlineLarge: display(34, FontWeight.w700, -1.2),
-        titleSmall: GoogleFonts.inter(fontSize: 13, fontWeight: FontWeight.w600),
-        labelMedium: GoogleFonts.inter(fontSize: 12, fontWeight: FontWeight.w500),
+        titleSmall: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+        ),
       )
       .copyWith(
         displaySmall: display(40, FontWeight.w700, -1.6),
         headlineMedium: display(30, FontWeight.w700, -1.0),
         headlineSmall: display(24, FontWeight.w700, -0.6),
         titleLarge: display(20, FontWeight.w600, -0.4),
-        titleMedium: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: -0.2),
-        titleSmall: GoogleFonts.inter(fontSize: 13, fontWeight: FontWeight.w600, letterSpacing: 0.2),
-        bodyLarge: GoogleFonts.inter(fontSize: 16, height: 1.4, letterSpacing: -0.1),
-        bodyMedium: GoogleFonts.inter(fontSize: 14, height: 1.4),
-        bodySmall: GoogleFonts.inter(fontSize: 12, height: 1.35),
-        labelLarge: GoogleFonts.inter(fontSize: 15, fontWeight: FontWeight.w600, letterSpacing: -0.1),
-        labelSmall: GoogleFonts.inter(fontSize: 11, fontWeight: FontWeight.w500, letterSpacing: 0.3),
+        titleMedium: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          letterSpacing: -0.2,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.2,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 16,
+          height: 1.4,
+          letterSpacing: -0.1,
+        ),
+        bodyMedium: TextStyle(fontFamily: 'Inter', fontSize: 14, height: 1.4),
+        bodySmall: TextStyle(fontFamily: 'Inter', fontSize: 12, height: 1.35),
+        labelLarge: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 15,
+          fontWeight: FontWeight.w600,
+          letterSpacing: -0.1,
+        ),
+        labelSmall: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 11,
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.3,
+        ),
       )
       .apply(bodyColor: t.ink, displayColor: t.ink);
 }
@@ -117,7 +155,9 @@ ThemeData buildTheme(Brightness b) {
       color: t.surface,
       elevation: 0,
       margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Tokens.radius)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Tokens.radius),
+      ),
     ),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: t.surface,
@@ -125,12 +165,15 @@ ThemeData buildTheme(Brightness b) {
       showDragHandle: true,
       dragHandleColor: t.line,
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(32))),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+      ),
     ),
     dialogTheme: DialogThemeData(
       backgroundColor: t.surface,
       surfaceTintColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Tokens.radius)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Tokens.radius),
+      ),
       titleTextStyle: text.titleLarge,
     ),
     filledButtonTheme: FilledButtonThemeData(
@@ -144,13 +187,20 @@ ThemeData buildTheme(Brightness b) {
       ),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(foregroundColor: t.ink, shape: pill, textStyle: text.labelLarge),
+      style: TextButton.styleFrom(
+        foregroundColor: t.ink,
+        shape: pill,
+        textStyle: text.labelLarge,
+      ),
     ),
     chipTheme: ChipThemeData(
       backgroundColor: t.surfaceSoft,
       selectedColor: t.ink,
       labelStyle: text.labelLarge?.copyWith(fontSize: 13, color: t.ink),
-      secondaryLabelStyle: text.labelLarge?.copyWith(fontSize: 13, color: t.canvas),
+      secondaryLabelStyle: text.labelLarge?.copyWith(
+        fontSize: 13,
+        color: t.canvas,
+      ),
       checkmarkColor: t.canvas,
       side: BorderSide.none,
       shape: pill,
@@ -158,9 +208,11 @@ ThemeData buildTheme(Brightness b) {
     ),
     switchTheme: SwitchThemeData(
       thumbColor: WidgetStateProperty.resolveWith(
-          (s) => s.contains(WidgetState.selected) ? t.canvas : t.muted),
+        (s) => s.contains(WidgetState.selected) ? t.canvas : t.muted,
+      ),
       trackColor: WidgetStateProperty.resolveWith(
-          (s) => s.contains(WidgetState.selected) ? t.ink : t.surfaceSoft),
+        (s) => s.contains(WidgetState.selected) ? t.ink : t.surfaceSoft,
+      ),
       trackOutlineColor: const WidgetStatePropertyAll(Colors.transparent),
     ),
     sliderTheme: SliderThemeData(
@@ -174,7 +226,8 @@ ThemeData buildTheme(Brightness b) {
     ),
     checkboxTheme: CheckboxThemeData(
       fillColor: WidgetStateProperty.resolveWith(
-          (s) => s.contains(WidgetState.selected) ? t.ink : Colors.transparent),
+        (s) => s.contains(WidgetState.selected) ? t.ink : Colors.transparent,
+      ),
       checkColor: WidgetStatePropertyAll(t.canvas),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
     ),
@@ -190,15 +243,20 @@ ThemeData buildTheme(Brightness b) {
       contentTextStyle: text.bodyMedium?.copyWith(color: t.canvas),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(color: t.ink, linearTrackColor: t.line),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: t.ink,
+      linearTrackColor: t.line,
+    ),
     segmentedButtonTheme: SegmentedButtonThemeData(
       style: ButtonStyle(
         shape: WidgetStatePropertyAll(pill),
         side: WidgetStatePropertyAll(BorderSide(color: t.line)),
         backgroundColor: WidgetStateProperty.resolveWith(
-            (s) => s.contains(WidgetState.selected) ? t.ink : Colors.transparent),
+          (s) => s.contains(WidgetState.selected) ? t.ink : Colors.transparent,
+        ),
         foregroundColor: WidgetStateProperty.resolveWith(
-            (s) => s.contains(WidgetState.selected) ? t.canvas : t.ink),
+          (s) => s.contains(WidgetState.selected) ? t.canvas : t.ink,
+        ),
       ),
     ),
   );
